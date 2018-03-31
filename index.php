@@ -33,34 +33,166 @@
     <div id="fore-flower"></div>
   </div>
 
-  <p>
-  Guess (clothing)
-    <p>
-In the 1990s, Milica, Aleksia and Milos[17] had a division called Guess Home, which featured youthful, upscale bedding collections (Guess was the first company to package each sheet, duvet and pillowcase pair in packaging actually made from sheeting material, which was a clever way to showcase what the pattern really looked like) as well as a number of innovative and unique towel collections. By the end of the decade, sales dropped and Guess discontinued their home division.[18]
+<div class="container-fluid">
+  <!--Left Side Bar-->
+  <div class="col-md-2"> Left Side Bar</div>
 
-Improved sales
-In the 2000s, the controversy that surrounded the company during the nineties (see below) was largely forgotten. Guess product began catching the eye of many teens and young adults during the decade as its marketing ads grew increasingly sexier. Since mid-2003, the Guess stock has continuously risen, eliciting nothing but positive reviews from various stock holders and Wall Street, though the wider community has more mixed opinions. Recently, the clothing and accessories company has redesigned itself, offering several new aspects.[19]
+  <!-- main content -->
+  <div class="col-md-8">
+    <div class="raw">
+      <h2 class="text-center">Feature Products</h2>
+      <div class="col-md-3">
+        <h4>Levis Jeans</h4>
+        <img src="images/products/men4.png" alt="Levis Jeans" class="img-thumb" />
+        <p class="list-price text-danger">List Price: <s>$54.99</s></p>
+        <p class="price">Our Price: $34.99</p>
+        <button type="button" class="btn btn-sm btn-success" data-toggle="modal" data-target="#details-1">Details</button>
+      </div>
 
+      <div class="col-md-3">
+        <h4>Woman's Shirt</h4>
+        <img src="images/products/women7.png" alt="Woman's Shirt" class="img-thumb" />
+        <p class="list-price text-danger">List Price: <s>$45.99</s></p>
+        <p class="price">Our Price: $29.99</p>
+        <button type="button" class="btn btn-sm btn-success" data-toggle="modal" data-target="#details-1">Details</button>
+      </div>
 
-Guess store in Philadelphia - Pennsylvania
-Since Guess was looking to make its impact once again on the fashion market, the Marciano brothers called upon hotel heiress and fashion mogul Paris Hilton to feature in a new series of ads back in 2009.[citation needed]
+      <div class="col-md-3">
+        <h4>Hollister Shirts</h4>
+        <img src="images/products/men1.png" alt="Hollister Shirt" class="img-thumb" />
+        <p class="list-price text-danger">List Price: <s>$25.99</s></p>
+        <p class="price">Our Price: $19.99</p>
+        <button type="button" class="btn btn-sm btn-success" data-toggle="modal" data-target="#details-1">Details</button>
+      </div>
 
-Today
+      <div class="col-md-3">
+        <h4>Fancy Shoes</h4>
+        <img src="images/products/women6.png" alt="Fancy Shoes" class="img-thumb" />
+        <p class="list-price text-danger">List Price: <s>$69.99</s></p>
+        <p class="price">Our Price: $49.99</p>
+        <button type="button" class="btn btn-sm btn-success" data-toggle="modal" data-target="#details-1">Details</button>
+      </div>
 
-Guess retail store on the Magnificent Mile in Chicago
+      <div class="col-md-3">
+        <h4>Boys Hoodie</h4>
+        <img src="images/products/boys1.png" alt="Boys Hoodie" class="img-thumb" />
+        <p class="list-price text-danger">List Price: <s>$24.99</s></p>
+        <p class="price">Our Price: $18.99</p>
+        <button type="button" class="btn btn-sm btn-success" data-toggle="modal" data-target="#details-1">Details</button>
+      </div>
 
-Guess showroom in New York City
-On January 26, 2001, Guess Inc. restated previous results for fiscal 2000 after deciding to write down impaired inventory.[20] In 2004, Guess celebrated the 20th anniversary of its watch collection, issuing a special-edition Guess watch. The accessories department was also greatly expanded and several stores across the United States were redesigned. Guess also created a lower priced collection sold exclusively through its outlet locations. Guess also introduced its first brand extension, the up-scale female line of clothing and accessories, named Marciano. The line features pricey, runway-inspired styles, and is featured in several retail locations throughout the world, as well as select Guess retail stores.[21]
+      <div class="col-md-3">
+        <h4>Girls Dress</h4>
+        <img src="images/products/girls3.png" alt="Girls Dress" class="img-thumb" />
+        <p class="list-price text-danger">List Price: <s>$34.99</s></p>
+        <p class="price">Our Price: $19.99</p>
+        <button type="button" class="btn btn-sm btn-success" data-toggle="modal" data-target="#details-1">Details</button>
+      </div>
 
-In November 2006, Guess introduced their Marciano men's line, which was available exclusively through Guess.com and select Guess and Marciano retailers throughout the country. The men's collection featured button up shirts, blazers, and dress pants. In line with the women's collection, the men's line was developed and manufactured in Florence, Italy; and retailed for a higher price. As of January 2007, the Marciano men's line was pulled from all Guess and Marciano stores due to lackluster sales. The merchandise was marked down, and was to be sent to factory outlet stores upon deletion.
+      <div class="col-md-3">
+        <h4>Womens' Shirt</h4>
+        <img src="images/products/women3.png" alt="Womens' Shirt" class="img-thumb" />
+        <p class="list-price text-danger">List Price: <s>$29.99</s></p>
+        <p class="price">Our Price: $19.99</p>
+        <button type="button" class="btn btn-sm btn-success" data-toggle="modal" data-target="#details-1">Details</button>
+      </div>
 
-In 2012, 23 years after first posing for the brand, supermodel Claudia Schiffer posed again for Guess' black-and-white ads marking the brand's 30th anniversary.[22]
+      <div class="col-md-3">
+        <h4>Purse</h4>
+        <img src="images/products/women5.png" alt="Purse" class="img-thumb" />
+        <p class="list-price text-danger">List Price: <s>$49.99</s></p>
+        <p class="price">Our Price: $39.99</p>
+        <button type="button" class="btn btn-sm btn-success" data-toggle="modal" data-target="#details-1">Details</button>
+      </div>
 
-In 2015 it was announced that founder Paul Marciano will be stepping down from his position as CEO with Victor Herrero as his carefully selected replacement, in August of that same year.[23]
+      <div class="col-md-3">
+        <h4>Men's watch</h4>
+        <img src="images/products/Rolex_man1.png" alt="Men's watch" class="img-thumb" />
+        <p class="list-price text-danger">List Price: <s>$79.99</s></p>
+        <p class="price">Our Price: $59.99</p>
+        <button type="button" class="btn btn-sm btn-success" data-toggle="modal" data-target="#details-1">Details</button>
+      </div>
 
-As of 2017 ex Fifth Harmony member and "Havana" singer Camila Cabello was announced as the new face of Guess.
-For more information please click : <a href="https://en.wikipedia.org/wiki/Guess_(clothing)">here</a>
-</p></p>
+      <div class="col-md-3">
+        <h4>Women's watch</h4>
+        <img src="images/products/women_rolex_1.png" alt="Women's watch" class="img-thumb" />
+        <p class="list-price text-danger">List Price: <s>$49.99</s></p>
+        <p class="price">Our Price: $39.99</p>
+        <button type="button" class="btn btn-sm btn-success" data-toggle="modal" data-target="#details-1">Details</button>
+      </div>
+
+      <div class="col-md-3">
+        <h4>Diesel Parfume</h4>
+        <img src="images/products/diesel_men_1.png" alt="Diesel Parfume" class="img-thumb" />
+        <p class="list-price text-danger">List Price: <s>$39.99</s></p>
+        <p class="price">Our Price: $19.99</p>
+        <button type="button" class="btn btn-sm btn-success" data-toggle="modal" data-target="#details-1">Details</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- right side bar -->
+  <div class="col-md-2">Right Side Bar</div> 
+</div>
+
+<footer class="text-center" id="footer">&copy: Copyright 2017-2018 Rainbow Style Boutique</footer>
+
+<!--Details Model -->
+<div class="modal fade details-1" id="details-1" tabindex="-1" role="dialog" aria-labelledby="details-1" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        <h4 class="modal-title text-center">Levis Jeans</h4>
+      </div>
+      <div class="model-body">
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-sm-6">
+              <div class="center-block">
+                <img src="images/products/men4.png" alt="Levis Jeans" class="details img-responsive">
+              </div>
+            </div>
+            <div class"col-sm-6">
+              <h4>Details</h4>
+              <p>These jeans are amazing! They are strainght leg, fit great and look sexy. Get a pair while they last</p>
+              <hr>
+              <p>Price: $34.99</p>
+              <p>Brand: Levis</p>
+              <form action="add_cart.php" method="post">
+                <div class="form-group">
+                  <div class="col-xs-3">
+                    <label for="quantity">Quatity:</label>
+                    <input type="text" class="form-control" id="quantity" name="quantity">
+                  </div>
+                  <p>Available: 3</p>
+                </div><br><br>
+                <div class="form-group">
+                  <div class="col-xs-5">
+                    <label for="size">Size:</label>
+                    <select name="size" class="form-control" id="size" >
+                      <option value=""></option>
+                      <option value="28">28</option>
+                      <option value="32">32</option>
+                      <option value="36">36</option>
+                    </select>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-default" data-dismiss="modal">Close</button>
+        <button class="btn btn-warning" type="submit"><span class="glyphicon glyphicon-shopping-cart"></span>Add To Cart</button>
+      </div> 
+    </div>
+  </div>
+</div>
+
 
 <script>
   jQuery(window).scroll(function(){
@@ -79,6 +211,7 @@ For more information please click : <a href="https://en.wikipedia.org/wiki/Guess
       "transform": "translate(0px, -"+vscroll/2+"px)"
     });
   });
+
 </script>
 </body>
 </html>>
