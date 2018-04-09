@@ -19,6 +19,21 @@
     });
   });
 
+  function detailsmodal(id){
+    var data = {"id" : id};
+    jQuery.ajax({
+      url : '/RainbowStyleBoutique/includes/detailsmodal.php',
+      method : "post",
+      data : data, 
+      success: function(data){
+        jQuery('body').append(data);
+        jQuery('#details-modal').modal('toggle');
+      },
+      error: function(){
+        alert("Something  went wrong!");
+      }
+    });
+  }
 </script>
-</body>
+    </body>
 </html>
