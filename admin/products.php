@@ -1,4 +1,4 @@
-<?php 
+<?php
 require_once $_SERVER['DOCUMENT_ROOT'].'/RainbowStyleBoutique/core/init.php';
 include 'includes/head.php';
 include 'includes/navigation.php';
@@ -6,9 +6,20 @@ if (isset($_GET['add'])){
 $brandQuery = $db->query("SELECT * FROM brand ORDER BY brand");
 $parentQuery = $db->query("SELECT * FROM categories WHERE parent = 0 ORDER BY category");
 if ($_POST){
+    $title = sanitize($_POST['title']);
+    $brand = sanitize($_POST['brand']);
+    if (isset($_POST['child']))
+    {
+        $categories = sanitize($_POST['child']);
+    }
+    $price = sanitize($_POST['price']);
+    $list_price = sanitize($_POST['list_price']);
+    $sizes = sanitize($_POST['sizes']);
+    $description = sanitize($_POST['description']);
+    $errors= array();
     if (!empty($_POST['sizes'])){
         $sizeString = sanitize($_POST['sizes']);
-        $sizeString = rtrim($sizeString, ',');echo $sizeString;
+        $sizeString = rtrim($sizeString, ',');
         $sizesArray = explode(',',$sizeString);
         $sArray = array();
         $qArray = array();
@@ -17,14 +28,74 @@ if ($_POST){
             $sArray[] = $s[0];
             $qArray[] = $s[1];
         }
-    }else{
-        $sizesArray = array();
-    }
+    }else{$sizesArray = array();}
     $required = array('title', 'brand', 'price', 'parent', 'child', 'sizes');
-}
+    // foreach($required as $field)
+    // {
+    //     if ($_POST[$field] == ''){
+    //         $errors[] = 'All Fiedls With and Astrisk are required. ';
+    //         break;
+    //     }
+    // }
+    if (!empty($_FILES))
+    {
+        var_dump($_FILES);
+        $photo = $_FILES['photo'];
+        $name = $photo['name'];
+        $nameArray = explode('.', $name);
+        $fileName = $nameArray[0];
+        $fileExt = $nameArray[1];
+        $mime = explode('/', $photo['type']);
+        $mimeType = $mime[0];
+        $mimeExt = $mime[1];
+        $tmpLoc = $photo['tmp_name'];
+        $fileSize = $photo['size'];
+        $allowed = array('png', 'jpg', 'jpeg', 'gif');
+        $uploadName = md5(microtime()).'.'.$fileExt;
+        $uploadPath = BASE_URL.'images/products/'.$uploadName;
+        $dbpath = '/RainbowStyleBoutique/images/products/'.$uploadName;
+        if($mimeType != 'image'){
+            $errors[] = 'The file must be an image';
+        }
+        if (!in_array($fileExt, $allowed))
+        {
+            $errors[] = 'The photo extension must be a png, jpg, jpeg, or git';
+        }
+        if ($fileSize > 15000000)
+        {
+            $errors[] = 'The files size must be under 15MB.';
+        }
+        if ($fileExt != $mimeExt &&($mimeExt == 'jpeg' && $fileExt != 'jpg'))
+        {
+            $errors[] = 'File extension does not match the file';
+        }
+    }
+    if(!empty($errors)){
+        echo display_errors($errors);
+    }
+    else{
+        // upload file and insert into products
+        move_uploaded_file($tmpLoc, $uploadPath);
+        $insertSql ="INSERT INTO products (`title`, `price`, `list_price`, `brand`, `categories`, `sizes`, `images`, `description`)
+        VALUES ('$title, '$price', '$list_price', '$brand', '$categories', '$sizes', '$dbpath', '$description')";
+        
+        $err = array();
+        $new_array = array($title, $price, $list_price, $brand, $categories, $sizes, $dbpath, $description);
+        foreach($new_array as $arr)
+        {
+            $err[] = $arr;
+        }
+        echo display_errors($err);
+        // $db->query($insertSql);
+        echo "error: ".mysqli_error($db);
+        
+        // header('Location: products.php');
+
+    }
+  }
 ?>
     <h2 class="text-center">Add A New Product</h2><hr>
-    <form action="products.php?add=1" method="POST" enctypy="multipart/form-data">
+    <form action="products.php?add=1" method="POST" enctype="multipart/form-data">
         <div class="form-group col-md-3">
             <label for="title">Title*:</label>
             <input type="text" name="title" class="form-control" id="title" value="<?=((isset($_POST['title']))?sanitize($_POST['title']):'');?>">
@@ -86,7 +157,7 @@ if ($_POST){
                 <div class="modal-content">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                        <h4 class="modal-title" id="sisezModalLabel">Size & Quantity</h4>
+                        <h4 class="modal-title" id="sizesModalLabel">Size & Quantity</h4>
                     </div>
                     <div class="modal-body">
                     <div class="container-fluid">
@@ -117,7 +188,7 @@ if (isset($_GET['featured'])){
     $featured = (int)$_GET['featured'];
     $featuredSql = "UPDATE products SET featured = '$featured' WHERE id = '$id'";
     $db->query($featuredSql);
-    header('Location: products.php'); 
+    header('Location: products.php');
 }
 ?>
 
@@ -150,7 +221,7 @@ if (isset($_GET['featured'])){
                 <td><a href="products.php?featured=<?=(($product['featured'] == 0)?'1':'0');?>&id=<?=$product['id'];?>" class="btn btn-xs btn-default">
                     <span class="glyphicon glyphicon-<?=(($product['featured'] == 1)?'minus':'plus'); ?>"></span>
                     </a>&nbsp <?=(($product['featured'] == 1)?'Featured Product':'');?></td>
-                <td></td>
+                <td>0</td>
             </tr>
         <?php endwhile;?>
     </tbody>
