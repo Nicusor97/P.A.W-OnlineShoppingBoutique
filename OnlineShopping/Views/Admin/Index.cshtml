@@ -1,0 +1,194 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/AdminShared/_LayoutAdmin.cshtml";
+}
+<div class="index-container">
+    <div class="row index-color-margin">
+        <div class="col-md-4">
+            <div class="registered-user-block">
+                <div class="form-group">
+                    <div class="col-md-8">
+                        <h3>83</h3>
+                        <h4>Registered Users</h4>
+                        <p>Others we denounce</p>
+                    </div>
+                    <div class="col-md-4">
+                        <i class="fa fa-file-text-o"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="daily-visitors-block">
+                <div class="col-md-8">
+                    <h3>135</h3>
+                    <h4>Daily visitors</h4>
+                    <p>Others we denounce</p>
+                </div>
+                <div class="col-md-4">
+                    <i class="fa fa-eye"></i>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="messages-block">
+                <div class="col-md-8">
+                    <h3>23</h3>
+                    <h4>New Messages</h4>
+                    <p>Others we denounce</p>
+                </div>
+                <div class="col-md-4">
+                    <i class="fa fa-envelope-o"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row index-color-margin">
+        <div class="col-md-6">
+            <div class="canvas-height">
+                <h3 class="canvas-title">
+                    SALES ANALYTICS
+                </h3>
+                <canvas id="myChart"></canvas>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="card hovercard">
+                <div class="cardheader">
+                </div>
+                <div class="avatar">
+                    <img alt="" src="~/images/Admin/b3.png">
+                </div>
+                <div class="info">
+                    <div class="title">
+                        <a target="_blank" href="#">Script Eden</a>
+                    </div>
+                    <div class="desc">Passionate designer</div>
+                    <div class="desc">Curious developer</div>
+                    <div class="desc">Tech geek</div>
+                </div>
+                <div class="bottom">
+                    <a class="btn btn-primary btn-twitter btn-sm btn-custom" href="https://twitter.com/webmaniac">
+                        <i class="fa fa-twitter"></i>
+                    </a>
+                    <a class="btn btn-danger btn-sm btn-custom" rel="publisher"
+                       href="https://plus.google.com/+ahmshahnuralam">
+                        <i class="fa fa-google-plus"></i>
+                    </a>
+                    <a class="btn btn-primary btn-sm btn-custom" rel="publisher"
+                       href="https://plus.google.com/shahnuralam">
+                        <i class="fa fa-facebook"></i>
+                    </a>
+                    <a class="btn btn-warning btn-sm btn-custom" rel="publisher" href="https://plus.google.com/shahnuralam">
+                        <i class="fa fa-behance"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row index-color-margin">
+
+        <div class="col-md-6">
+            <div class="canvas-height">
+                <h3 class="canvas-title">
+                    TOTAL SALES
+                </h3>
+                <div class="total-sales">
+                    <canvas id="salesChart" style="width:373px!important;height:292px!important;"></canvas>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="canvas-height">
+                <h3 class="canvas-title">
+                    TOTAL REVENUE
+                </h3>
+                <div class="total-revenue">
+                    <canvas id="revenueChart" style="width:373px!important;height:292px!important;"></canvas>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row index-color-margin">
+        <div class="col-md-6">
+            <div class="form-group">
+                <div class="col-md-6">
+                    <h4 style="color:#33b645">Popular</h4>
+                    <p style="color:#fc8213">Brand of this month</p>
+                    <p>Duis aute irure in reprehenderit.</p>
+                </div>
+                <div class="col-md-6 popular-brand-right">
+                    <p class="brand-name">Polo</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+
+        </div>
+    </div>
+</div>
+@section Scripts{
+    <script type="text/javascript">
+        var ctx = document.getElementById("myChart").getContext('2d');
+        
+        var myChart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul"],
+                datasets: [{
+
+                    data: [65, 39, 90, 17, 28, 24, 7],
+                    backgroundColor: "#fc8213"
+                }, {
+
+                    data: [30, 29, 5, 5, 20, 3, 10],
+                    backgroundColor: "#337ab7"
+                }]
+            },
+            options: {
+                responsive: true,
+                maintaingAspectRatio: false,
+                scales: {
+                    yAxes: [{
+                        ticks: {
+                            beginAtZero:true
+                        }
+                    }]
+                }
+            }
+        });
+        var revenue = document.getElementById("revenueChart").getContext("2d");
+        var myChart = new Chart(revenue, {
+            type: 'radar',
+            data: {
+                labels: ["M", "T", "W", "T", "F", "S", "S"],
+                datasets: [{
+                    label: 'apples',
+                    backgroundColor: "rgba(153,255,51,0.4)",
+                    borderColor: "rgba(153,255,51,1)",
+                    data: [12, 19, 3, 17, 28, 24, 7]
+                }, {
+                    label: 'oranges',
+                    backgroundColor: "rgba(255,153,0,0.4)",
+                    borderColor: "rgba(255,153,0,1)",
+                    data: [30, 29, 5, 5, 20, 3, 10]
+                }]
+            }
+        });
+        var sales = document.getElementById("salesChart").getContext("2d");
+        var saleschart = new Chart(sales, {
+            type: 'line',
+            data: {
+                labels: ["Rating", "Quality", "Amount", "Farming"],
+                datasets: [{
+                    backgroundColor: "#fc8213",
+                    borderColor: "33b645",
+                    data: [40, 88, 45, 10]
+                }]
+            }
+        });
+
+    </script>
+}
+

@@ -1,0 +1,152 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="~/images/favicon/favicon-32x32.png" type="image/x-icon">
+    <title>@ViewBag.Title - Online Shopping</title>
+        @Styles.Render("~/Content/css")
+        <link href="~/Content/flexslider.css" rel="stylesheet" />
+    <link href="~/Content/toastr.min.css" rel="stylesheet" />
+    @Scripts.Render("~/bundles/modernizr")
+
+    <script type = 'text/javascript' >
+        var appInsights=window.appInsights||function(config)
+        {
+            function r(config){ t[config] = function(){ var i = arguments; t.queue.push(function(){ t[config].apply(t, i)})} }
+            var t = { config:config},u=document,e=window,o='script',s=u.createElement(o),i,f;for(s.src=config.url||'//az416426.vo.msecnd.net/scripts/a/ai.0.js',u.getElementsByTagName(o)[0].parentNode.appendChild(s),t.cookie=u.cookie,t.queue=[],i=['Event','Exception','Metric','PageView','Trace','Ajax'];i.length;)r('track'+i.pop());return r('setAuthenticatedUserContext'),r('clearAuthenticatedUserContext'),config.disableExceptionTracking||(i='onerror',r('_'+i),f=e[i],e[i]=function(config, r, u, e, o) { var s = f && f(config, r, u, e, o); return s !== !0 && t['_' + i](config, r, u, e, o),s}),t
+        }({
+            instrumentationKey:'c4910d32-805d-4e14-8525-a2a70d872ffd'
+        });
+        
+        window.appInsights=appInsights;
+        appInsights.trackPageView();
+    </script>
+</head>
+<body>
+    @using Microsoft.AspNet.Identity
+    @using System.Security.Claims
+    @using ECommPract.ContextClass
+    <div class="navbar navbar-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                @*@Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })*@
+                <input type="text" placeholder="eg T-shirt" class="form-control navbar-brand navbar-text" />
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav pull-right navbar-border">
+                    <li>@Html.ActionLink("Your Cart", "Cart", "ShoppingCart")</li>
+                    <li>@Html.ActionLink("Checkout", "Checkout", "Checkout")</li>
+                    @if (Request.IsAuthenticated)
+                                {
+                                    var identity = (ClaimsIdentity)User.Identity;
+                                    var name = identity.FindFirstValue(ClaimTypes.GivenName) ?? User.Identity.GetUserName();
+                                    using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
+                                    {
+                                        @Html.AntiForgeryToken()
+
+                                       <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Welcome @name !</a>
+                            <ul class="dropdown-menu">
+                                <li>@Html.ActionLink("My Account", "Index", "Home")</li>
+                                <li><a href="javascript:document.getElementById('logoutForm').submit()">Log off</a></li>
+                            </ul>
+                        </li>
+                        }
+
+                    }
+                    else
+                    {
+                        <li>@Html.ActionLink("Login", "Login", "Account")</li>
+                        <li>@Html.ActionLink("Register","Register","Account")</li>
+                    }
+                </ul>
+                @*@Html.Partial("_LoginPartial")*@
+            </div>
+        </div>
+    </div>
+    <div class="navbar-main">
+        <div class="container">
+            <div class="navbar-header navbar-margin">
+                @*@Html.ActionLink("Shopper", "Index", "Home", new { area = "" }, new { @class = "navbar-logo" })*@
+                <a href="@Url.Action("Index","Home")"><div class="navbar-logo"></div></a>
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav pull-right main-list">
+                    
+                    <li>@Html.ActionLink("MAN", "Product", "Product",new { categoryid = (int)clsEnum.Categories.MAN },null)</li>
+                    <li>@Html.ActionLink("WOMAN", "Product", "Product", new { categoryid = (int)clsEnum.Categories.WOMAN },null)</li>
+                    <li>@Html.ActionLink("SPORT", "Product", "Product",new { categoryid = (int)clsEnum.Categories.SPORT }, null)</li>
+                    <li>@Html.ActionLink("HANDBAG", "Product", "Product",new { categoryid = (int)clsEnum.Categories.HANDBAG }, null)</li>
+                    <li>@Html.ActionLink("KIDS", "Product", "Product",new { categoryid = (int)clsEnum.Categories.KIDS }, null)</li>
+                    <li>@Html.ActionLink("BEST SELLER", "Product", "Product")</li>
+                    <li>@Html.ActionLink("TOP SELLER", "Product", "Product")</li>
+                    
+                </ul>
+                @*@Html.Partial("_LoginPartial")*@
+            </div>
+        </div>
+    </div>
+    <div class="body-content-new">
+        @RenderBody()
+       
+        <section class="footer">
+            <div class="form-horizontal">
+                <div class="form-group">
+                    <div class="col-md-3">
+                        <h4>Navigation</h4>
+                        <ul class="navigation">
+                            <li><a href="#">Homepage</a></li>
+                            <li><a href="#">About Us</a></li>
+                            <li><a href="@Url.Action("Contact","Home")">Contact Us</a></li>
+                            <li><a href="#">Your Cart</a></li>
+                            <li><a href="@Url.Action("Login","Account")">Login</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-md-4">
+                        <h4>My Account</h4>
+                        <ul class="navigation">
+                            <li><a href="#">My Account</a></li>
+                            <li><a href="#">Order History</a></li>
+                            <li><a href="#">Wish List</a></li>
+                            <li><a href="#">Newsletter</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-md-5">
+                        <p>
+                            <img src="~/images/logo.png" />
+                        </p>
+                        <p>
+                            Lorem Ipsum is simply dummy text of the printing and typesetting industry. the  Lorem Ipsum has been the industry's standard dummy text ever since the you.
+                        </p>
+
+                        <ul class="social-icons pull-right">
+                            <li><a href="https://www.facebook.com" target="_blank"><span class="fa fa-facebook"></span></a></li>
+                            <li><a href="https://www.twitter.com" target="_blank"><span class="fa fa-twitter"></span></a></li>
+                            <li><a href="https://www.instagram.com" target="_blank"><span class="fa fa-instagram"></span></a></li>
+                            <li><a href="https://www.youtube.com" target="_blank"><span class="fa fa-youtube" style="margin-right:15px;"></span></a></li>
+                        </ul>
+
+                    </div>
+                </div>
+            </div>
+        </section>
+        <footer>
+
+            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+        </footer>
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+        @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/bundles/jqueryui")
+        <script src="~/Scripts/jquery.flexslider-min.js"></script>
+    <script src="~/Scripts/toastr.min.js"></script>
+    @RenderSection("scripts", required: false)
+</body>
+</html>

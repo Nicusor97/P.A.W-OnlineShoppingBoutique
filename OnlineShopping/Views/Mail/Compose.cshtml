@@ -1,0 +1,48 @@
+﻿
+@{
+    ViewBag.Title = "Compose";
+    Layout = null;
+    //"~/Views/AdminShared/_LayoutAdmin.cshtml"
+}
+@*<link href="~/Content/Admin/composemail.css" rel="stylesheet" />*@
+<div class="compose">
+    <h2 class="compose-email">Compose New Mail</h2>
+    <div class="compose-body">
+        <div class="fill-message">
+            Please Fill details to send a new message
+        </div>
+        <div class="">
+            <div class="form-group">
+                <div class="col-md-12">
+                    <input type="text" placeholder="To:" class="form-control" />
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-12">
+                    <input type="text" placeholder="Subject:" class="form-control" />
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-12">
+                    <textarea class="form-control" placeholder="Message" style="resize:none;height:200px;"></textarea>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-12">
+                    <div class="btn btn-default btn-file">
+                        <i class="fa fa-paperclip"></i>
+                        Attachment
+                        <input type="file" />
+                    </div>
+
+                </div>
+            </div>
+            <div class="form-group">
+                <dv class="col-md-12">
+                    <button type="button" class="btn btn-success">Send Message</button>
+                </dv>
+            </div>
+        </div>
+    </div>
+</div>
+

@@ -1,0 +1,110 @@
+﻿
+@{
+    ViewBag.Title = "Manage Roles";
+    Layout = null;
+    //"~/Views/AdminShared/_LayoutAdmin.cshtml";
+}
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<h2>Manage Roles</h2>
+<h4>Add Roles To User</h4>
+<div class="form-horizontal">
+    @{
+        using (Html.BeginForm("RolesAddToUser", "Admin"))
+        {
+            <div class="form-group">
+                <div class="col-md-3 control-label">
+                    User Name:
+                </div>
+                <div class="col-md-9">
+                    @*@Html.TextBox("UserName",null,new { @class="form-control" })*@
+                    @*@Html.DropDownList("listUsers", new SelectList(ViewBag.listUsers, "Id", "Username"), new { @class = "form-control",name="normal" })*@
+                    @Html.TextBox("lstUsers", null, new { @class = "form-control", title = "Search Username" })
+
+                </div>
+            </div>
+            <div class="form-group ">
+                <div class="col-md-3 control-label">
+                    Roles
+                </div>
+                <div class="col-md-9">
+                    @Html.DropDownList("lstRoles", new SelectList(ViewBag.listRole, "Name", "Name"), "Select...", new { @class = "form-control" })
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-12 text-right">
+                    <input type="submit" value="Save" class="btn btn-default" />
+                    <input type="reset" value="Cancel" class="btn btn-default" />
+                </div>
+            </div>
+        }
+    }
+  
+    <h4>Delete Roles</h4>
+    @using (Html.BeginForm("DeleteRoles", "Roles"))
+    {
+        <div class="form-group">
+            <div class="col-md-3 control-label">
+                User Name:
+            </div>
+            <div class="col-md-9">
+                @Html.TextBox("delUserName", null, new { @class = "form-control" })
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-3 control-label">
+                Roles
+            </div>
+            <div class="col-md-9">
+                @Html.DropDownList("Roles", new SelectList(ViewBag.listRole, "Id", "Name"), "Select...", new { @class = "form-control" })
+            </div>
+        </div>
+            <div class="form-group">
+                <div class="col-md-12 text-right">
+                    <input type="submit" value="Delete Role for this User" class="btn btn-default" />
+                    <input type="reset" value="Cancel" class="btn btn-default" />
+                </div>
+
+            </div>
+    }
+</div>
+@Scripts.Render("~/bundles/jquery")
+@Scripts.Render("~/bundles/jqueryui")
+<script type="text/javascript">
+    $(function () {
+        var availableTags = [
+  "ActionScript",
+  "AppleScript",
+  "Asp",
+  "BASIC",
+  "C",
+  "C++",
+  "Clojure",
+  "COBOL",
+  "ColdFusion",
+  "Erlang",
+  "Fortran",
+  "Groovy",
+  "Haskell",
+  "Java",
+  "JavaScript",
+  "Lisp",
+  "Perl",
+  "PHP",
+  "Python",
+  "Ruby",
+  "Scala",
+  "Scheme"
+        ];
+        $("#lstUsers").autocomplete({
+            source: '@Url.Action("GetUser", "Admin")'
+            @*'@Url.Action("GetUser", "Admin")'*@
+        });
+        $("#getUserName").autocomplete({
+            source: '@Url.Action("GetUser", "Admin")'
+        });
+        $("#delUserName").autocomplete({
+            source: '@Url.Action("GetUser", "Admin")'
+        });
+    });
+</script>
+

@@ -1,0 +1,31 @@
+﻿@model List<ECommPract.Models.SetupModel.BrandSetup>
+@{
+    ViewBag.Title = "Brand Details";
+}
+
+<div class="contact-wrapper" style="padding-bottom:10px;">
+    <div class="image-contact">
+        <img src="~/images/pageBanner.png" />
+        <h2 style="text-align:center">Brands</h2>
+    </div>
+    <div class="row product-margin">
+        <div class="form-group">
+            @foreach(var items in Model)
+            {
+                <div class="col-md-4">
+                    <div class="productbox product-adjust">
+                        <a href="@Url.Action("BrandEdit","Category", new { brandid=items.BRANDID })">
+                            <img src="@Url.Content(items.BRANDIMAGEURL)" />
+                        </a>
+                        <a href="@Url.Action("BrandEdit","Category", new { brandid=items.BRANDID })" class="title-product">@items.BRANDNAME</a>
+                        @*<br />*@
+                        @*<a href="#" class="category">Commodo consequat</a>
+                        <p class="price">$17.25</p>*@
+                    </div>
+                </div>
+
+            }
+        </div>
+    </div>
+</div>
+

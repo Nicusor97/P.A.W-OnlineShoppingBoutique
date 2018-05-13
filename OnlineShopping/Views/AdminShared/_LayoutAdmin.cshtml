@@ -1,0 +1,381 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="~/images/favicon/favicon-32x32.png" type="image/x-icon">
+    <title>@ViewBag.Title - Online Shopping</title>
+    @Styles.Render("~/Content/css")
+    @Styles.Render("~/Content/admin")
+    <link href="~/Content/flexslider.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap-combobox.css" rel="stylesheet" />
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+<body>
+    @using Microsoft.AspNet.Identity
+    @using System.Security.Claims
+    <div class="page-container">
+
+        <div class="nav navbar-fixed-top left-content">
+            <div class="container page-adjustment">
+                <div class="header-left">
+                    <div class="navbar-header">
+                        <div class="logo">
+                            <a href="@Url.Action("Index","Admin")">
+                                <img src="~/images/logo.png" />
+                            </a>
+                        </div>
+                        @*<div class="search-box">
+                            <input type="text" placeholder="Search..." />
+                            <input type="submit" value="" />
+                        </div>*@
+                    </div>
+                </div>
+                <div class="header-right">
+                    <div class="navbar-collapse collapse">
+                        <div class="nav navbar-nav navbar-border">
+                            <div class="profile-details-left">
+                                <ul>
+                                    <li class="dropdown">
+                                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                                            <i class="fa fa-envelope"></i>
+                                            <span class="badge">3</span>
+                                        </a>
+                                        <ul class="dropdown-menu">
+                                            <li>
+                                                <div class="notification-header">
+                                                    <h3>You Have 3 new messages</h3>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <a href="#">
+                                                    <div class="noti-img">
+                                                        <img src="~/images/Admin/p4.png" />
+                                                    </div>
+                                                    <div class="noti-desc">
+                                                        <p>
+                                                            Lorem ipsum
+                                                        </p>
+                                                        <p>
+                                                            <span>1 hour ago</span>
+                                                        </p>
+                                                    </div>
+                                                    <div class="clearfix"></div>
+                                                </a>
+
+                                            </li>
+                                            <li>
+                                                <a href="#">
+                                                    <div class="noti-img">
+                                                        <img src="~/images/Admin/p2.png" />
+                                                    </div>
+                                                    <div class="noti-desc">
+                                                        <p>
+                                                            Lorem ipsum
+                                                        </p>
+                                                        <p>
+                                                            <span>1 hour ago</span>
+                                                        </p>
+                                                    </div>
+                                                    <div class="clearfix"></div>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="#">
+                                                    <div class="noti-img">
+                                                        <img src="~/images/Admin/p3.png" />
+                                                    </div>
+                                                    <div class="noti-desc">
+                                                        <p>
+                                                            Lorem ipsum
+                                                        </p>
+                                                        <p>
+                                                            <span>1 hour ago</span>
+                                                        </p>
+                                                    </div>
+                                                    <div class="clearfix"></div>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <div class="noti-bottom">
+
+                                                    <a href="#">See all messages<div class="clearfix"></div></a>
+
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    <li class="dropdown">
+                                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                                            <i class="fa fa-bell"></i>
+                                            <span class="badge blue">5</span>
+                                        </a>
+                                        <ul class="dropdown-menu">
+                                            <li>
+                                                <div class="notification-header">
+                                                    <h3>You Have 5 new notifications</h3>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <a href="#">
+                                                    <div class="noti-img">
+                                                        <img src="~/images/Admin/p4.png" />
+                                                    </div>
+                                                    <div class="noti-desc">
+                                                        <p>
+                                                            Lorem ipsum
+                                                        </p>
+                                                        <p>
+                                                            <span>1 hour ago</span>
+                                                        </p>
+                                                    </div>
+                                                    <div class="clearfix"></div>
+                                                </a>
+
+                                            </li>
+                                            <li>
+                                                <a href="#">
+                                                    <div class="noti-img">
+                                                        <img src="~/images/Admin/p2.png" />
+                                                    </div>
+                                                    <div class="noti-desc">
+                                                        <p>
+                                                            Lorem ipsum
+                                                        </p>
+                                                        <p>
+                                                            <span>1 hour ago</span>
+                                                        </p>
+                                                    </div>
+                                                    <div class="clearfix"></div>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="#">
+                                                    <div class="noti-img">
+                                                        <img src="~/images/Admin/p3.png" />
+                                                    </div>
+                                                    <div class="noti-desc">
+                                                        <p>
+                                                            Lorem ipsum
+                                                        </p>
+                                                        <p>
+                                                            <span>1 hour ago</span>
+                                                        </p>
+                                                    </div>
+                                                    <div class="clearfix"></div>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <div class="noti-bottom">
+
+                                                    <a href="#">See all messages<div class="clearfix"></div></a>
+
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    <li class="dropdown">
+                                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                                            <i class="fa fa-tasks"></i>
+                                            <span class="badge green">9</span>
+                                        </a>
+                                        <ul class="dropdown-menu">
+                                            <li>
+                                                <div class="notification-header">
+                                                    <h3>You have 9 pending tasks</h3>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="task-info">
+                                                    <span class="task-desc">Database Update</span>
+                                                    <span class="percentage">40%</span>
+                                                    <div class="clearfix"></div>
+                                                </div>
+                                                <div class="progress progress-striped active" style="margin-right:15px;">
+                                                    <div class="progress-bar progress-bar-warning" style="width:40%;"></div>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="task-info">
+                                                    <span class="task-desc">Dashboard Done</span>
+                                                    <span class="percentage">90%</span>
+                                                    <div class="clearfix"></div>
+                                                </div>
+                                                <div class="progress progress-striped active" style="margin-right:15px;">
+                                                    <div class="progress-bar progress-bar-success" style="width:90%;"></div>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="task-info">
+                                                    <span class="task-desc">Mobile App</span>
+                                                    <span class="percentage">33%</span>
+                                                    <div class="clearfix"></div>
+                                                </div>
+                                                <div class="progress progress-striped active" style="margin-right:15px;">
+                                                    <div class="progress-bar progress-bar-danger" style="width:33%;"></div>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="task-info">
+                                                    <span class="task-desc">Issues Fixed</span>
+                                                    <span class="percentage">80%</span>
+                                                    <div class="clearfix"></div>
+                                                </div>
+                                                <div class="progress progress-striped active" style="margin-right:15px;">
+                                                    <div class="progress-bar" style="width:80%;"></div>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="noti-bottom">
+
+                                                    <a href="#">See all Tasks<div class="clearfix"></div></a>
+
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="profile-details-right">
+
+                                <ul>
+                                    @if (Request.IsAuthenticated)
+                                    {
+                                        var identity = (ClaimsIdentity)User.Identity;
+                                        var name = identity.FindFirstValue(ClaimTypes.GivenName) ?? User.Identity.GetUserName();
+                                        using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
+                                        {
+                                            @Html.AntiForgeryToken()
+
+                                            <li class="dropdown">
+                                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                                                    <div class="profile-img">
+
+                                                        <img src="~/images/Admin/p1.png" />
+                                                    </div>
+                                                    <div class="username">
+                                                        <p>@name</p>
+                                                        <span>Administrator</span>
+                                                    </div>
+                                                    <i class="fa fa-angle-down lnr"></i>
+                                                </a>
+                                                <ul class="dropdown-menu user-menu">
+                                                    <li><a href="#"><i class="fa fa-cog"></i>Settings</a></li>
+                                                    <li><a href="#"><i class="fa fa-user"></i>Profile</a></li>
+                                                    <li><a href="javascript:document.getElementById('logoutForm').submit()"><i class="fa fa-sign-out"></i>Log off</a></li>
+                                                </ul>
+                                            </li>
+                                        }
+
+                                    }
+                                </ul>
+                            </div>
+
+                        </div>
+                        @*@Html.Partial("_LoginPartial")*@
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="sidebar-admin-menu">
+            <div class="menu">
+                <ul id="menu">
+                    <li>
+                        <a href="@Url.Action("Index","Admin")">
+                            <i class="fa fa-tachometer"></i><br />
+                            <span>Dashboard</span>
+                        </a>
+                    </li>
+                    @*<li>
+                            <a href="#">
+                                <i class="fa fa-cogs"></i><br />
+                                <span>Components</span>
+                                <span class="glyphicon glyphicon-chevron-right"></span>
+                            </a>
+                        </li>*@
+                    @*<li>
+                            <a href="#">
+                                <i class="fa fa-book"></i><br />
+                                <span>Elements</span>
+                                <span class="glyphicon glyphicon-chevron-right"></span>
+                            </a>
+                        </li>*@
+                    <li>
+                        <a href="#">
+                            <i class="fa fa-map-marker"></i><br />
+                            <span>Maps</span>
+                        </a>
+                    </li>
+                    @*<li>
+                            <a href="#">
+                                <i class="fa fa-file-text"></i><br />
+                                <span>Pages</span>
+                            </a>
+                        </li>*@
+                    <li>
+                        <a href="@Url.Action("Charts","Admin")">
+                            <i class="fa fa-bar-chart"></i><br />
+                            <span>Charts</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="@Url.Action("Inbox","Mail")">
+                            <i class="fa fa-envelope"></i><br />
+                            <span>Mailbox</span>
+                        </a>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" data-toggle="dropdown" class="dropdown-toggle" aria-expanded="false">
+                            <i class="fa fa-cog"></i><br />
+                            <span>System</span>
+                            <i class="fa fa-caret-right"></i>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a href="@Url.Action("CategorySetup","Category")">Category Setup</a></li>
+                            <li><a href="@Url.Action("Brand","Category")">Brand Setup</a></li>
+                            <li><a href="@Url.Action("ProductSetup","ProductSetup")">Product Setup</a></li>
+                            <li><a href="@Url.Action("RoleIndex","Admin")">User Roles Setup</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" data-toggle="dropdown" class="dropdown-toggle" aria-expanded="false">
+                            <i class="fa fa-shopping-cart"></i><br />
+                            <span>E-Commerce</span>
+                            <i class="fa fa-caret-right"></i>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a href="@Url.Action("ProductAdmin","Admin")">Product</a></li>
+                            <li><a href="#">Price</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+    </div>
+    <div class="admin-body-content">
+        @RenderBody()
+    </div>
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/bundles/jqueryui")
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#menu li.dropdown").hover(function () {
+                $(this).find(".dropdown-menu").stop(true, true).delay(200).fadeIn(500);
+            }, function () {
+                $(this).find(".dropdown-menu").stop(true, true).delay(200).fadeOut(500);
+            })
+        });
+    </script>
+
+    <script src="~/Scripts/jquery.flexslider-min.js"></script>
+    <script src="~/Scripts/bootstrap-combobox.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.1.4/Chart.min.js"></script>
+    @*<script src="~/Scripts/Chart.js"></script>*@
+    @RenderSection("scripts", required: false)
+</body>
+</html>

@@ -1,0 +1,29 @@
+﻿
+@{
+    ViewBag.Title = "Create Role";
+    Layout = null;
+    //"~/Views/AdminShared/_LayoutAdmin.cshtml"
+}
+
+<h2>Create Role</h2>
+<div class="form-horizontal">
+    @{
+        using (Html.BeginForm())
+        {
+            <div class="form-group">
+                <div class="col-md-3 control-label">
+                    Role Name
+                </div>
+                <div class="col-md-9">
+                    @Html.TextBox("RoleName",null, new { @class = "form-control" })
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-12 text-right">
+                    <input type="submit" class="btn btn-default" value="Save" />
+                    <input type="reset" class="btn btn-default" value="Cancel" />
+                </div>
+            </div>
+        }
+    }
+</div>

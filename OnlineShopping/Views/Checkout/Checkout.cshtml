@@ -1,0 +1,208 @@
+﻿@model ECommPract.ViewModels.CheckoutViewModel
+    @using Microsoft.AspNet.Identity
+@using System.Security.Claims
+@{
+    ViewBag.Title = "Checkout";
+}
+<div class="contact-wrapper">
+    <div class="image-contact">
+        <img src="~/images/pageBanner.png" />
+        <h2 style="text-align:center">Checkout</h2>
+    </div>
+    <div class="row product-margin">
+        <div class="col-md-12 checkout-margin">
+            <div class="panel-group" id="accordion">
+@using (Html.BeginForm("Checkout", "Checkout", FormMethod.Post))
+{
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h4 class="panel-title">
+                            <a data-toggle="collapse" data-parent="#accordion" href="#checkoutdetail">Order Summary</a>
+                        </h4>
+                    </div>
+                    <div class="panel-collapse collapse in" id="checkoutdetail">
+                        <div class="panel-body">
+                            <div class="row" style="padding:15px;">
+                                @*<div class="col-md-6">
+                                        <h3>
+                                            New Customer
+                                        </h3>
+                                        <p>
+                                            By creating an account you will be able to shop faster, be up to date on an order's status, and keep track of the orders you have previously made.
+                                        </p>
+                                        <input type="radio" value="register" name="account" />Register Account<br />
+                                        <input type="radio" value="guest" name="account" />Guest Checkout<br />
+                                        <button class="btn btn-default">Continue</button>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <h3>
+                                            Returning Customer
+                                        </h3>
+                                        <p>I am a returning customer.</p>
+                                        <div class="form-group">
+                                            <label>Username:</label>
+                                            @*<div class="col-md-12">*@
+                                @*@Html.TextBoxFor(m=>m.UserName,new { @class="form-control",placeholder="Enter Username" })*@
+                                @*</div>*@
+                                @{ 
+                                    var identity = (ClaimsIdentity)User.Identity;
+                                    var name = identity.FindFirstValue(ClaimTypes.GivenName)??User.Identity.GetUserName();
+                                }
+                                <p>Thank you for shopping with us, @name. We hope to see you again!!<i class="fa fa-2x fa-smile"></i></p>
+                               
+                                        
+                                   
+                                <table class="table-bordered table-responsive table-striped" style="width:100%;">
+                                    <tr>
+                                        <td>S.No.</td>
+                                        <td>Items</td>
+                                        <td>Qty</td>
+                                        <td>Unit Price</td>
+                                        <td>Total</td>
+                                    </tr>
+                                        @foreach (var items in Model.shoppingCart.Select((x, i) => new { data = x, index = i+1 }))
+                                        {
+                                            <tr>
+                                                <td class="table-text-align-numbers-center">
+                                                    @items.index
+                                                </td>
+                                                <td>@items.data.Product.ProductName</td>
+                                                <td class="table-text-align-numbers-right">@items.data.Quantity</td>
+                                                <td class="table-text-align-numbers-right">Rs @items.data.Product.PRICE</td>
+                                                <td class="table-text-align-numbers-right"><span id="tot-price-@items.index"></span></td>
+                                            </tr>
+                                        }
+                                    
+                                   <tr>
+                                       <td colspan="4" style="text-align:right">Total</td>
+                                       <td class="table-text-align-numbers-right"><span class="subTotal"></span></td>
+                                   </tr>
+                                    <tr>
+                                        <td colspan="4" style="text-align:right">Vat (17.5%)</td>
+                                        <td class="table-text-align-numbers-right"><span id="vatAmt"></span></td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="4" style="text-align:right">Grand Total</td>
+                                        <td class="table-text-align-numbers-right">Rs @Model.Grandtotal</td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                    
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h4 class="panel-title">
+                                    <a data-toggle="collapse" data-parent="#accordion" href="#billingdetail">Address & Billing Detail</a>
+                                </h4>
+                            </div>
+                            <div class="collapse panel-collapse" id="billingdetail">
+                                <div class="panel-body">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <h3>Your Personal Detail</h3>
+                                            <div class="form-group">
+                                                <label>First Name: </label>
+                                                @Html.TextBoxFor(m => m.order.FirstName, new { @class = "form-control" })
+                                                <label>Last Name: </label>
+                                                @Html.TextBoxFor(m => m.order.LastName, new { @class = "form-control" })
+                                                <label>Email Address: </label>
+                                                @Html.TextBoxFor(m => m.order.Email, new { @class = "form-control" })
+                                                <label>Telephone: </label>
+                                                @Html.TextBoxFor(m => m.order.TelNo, new { @class = "form-control" })
+                                                <label>Fax: </label>
+                                                @Html.TextBoxFor(m => m.order.Fax, new { @class = "form-control" })
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <h3>Your Address</h3>
+                                            <div class="form-group">
+                                                <label>Company: </label>
+                                                @Html.TextBoxFor(m => m.order.Company, new { @class = "form-control" })
+                                                <label>Company ID: </label>
+                                                @Html.TextBoxFor(m => m.order.CompanyID, new { @class = "form-control" })
+                                                <label>* Address 1: </label>
+                                                @Html.TextBoxFor(m => m.order.Address1, new { @class = "form-control" })
+                                                <label>Address 2: </label>
+                                                @Html.TextBoxFor(m => m.order.Address2, new { @class = "form-control" })
+                                                <label>* City: </label>
+                                                @Html.TextBoxFor(m => m.order.City, new { @class = "form-control" })
+                                                <label>* Postal Code: </label>
+                                                @Html.TextBoxFor(m => m.order.PostalCode, new { @class = "form-control" })
+                                                <label>* Country: </label>
+                                                <select class="form-control">
+                                                    <option>Afghanistan</option>
+                                                    <option>Angolia</option>
+                                                    <option>Nepal</option>
+                                                    <option>New Zealand</option>
+                                                    <option>USA</option>
+                                                </select>
+                                                <label>* Region / State: </label>
+                                                <select class="form-control">
+                                                    <option>Region 1</option>
+                                                    <option>Region 2</option>
+                                                    <option>Region 3</option>
+                                                    <option>Region 4</option>
+                                                    <option>Region 5</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h4 class="panel-title">
+                                    <a data-toggle="collapse" data-parent="#accordion" href="#confirmorder">Confirm Order</a>
+                                </h4>
+                            </div>
+                            <div class="panel-collapse collapse" id="confirmorder">
+                                <div class="panel-body">
+                                    <div class="form-group">
+                                        <label>Comments:</label>
+                                        @Html.TextAreaFor(m => m.order.Comment, new { @class = "form-control", style = "resize:none;widthL100%;" })
+                                        <div class="text-right">
+                                            <button type="submit" class="btn btn-default" style="margin-top:5px;">Confirm Order</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    }
+
+                
+            </div>
+        </div>
+    </div>
+</div>
+@section Scripts{
+    <script type="text/javascript">
+        function calcTotal() {
+            var subTotal = 0;
+            var vatAmt = 0;
+            
+            $.ajax({
+                type: 'GET',
+                url: '@Url.Action("CalculateTotal","ShoppingCart")',
+                success: function (response) {
+                    $.each(response, function (index, value) {
+                        $("#tot-price-" + (index + 1)).text("Rs " + value);
+                        subTotal += parseFloat(value);
+                        $(".subTotal").text("Rs " + subTotal);
+                        vatAmt = 0.175 * subTotal;
+                        $("#vatAmt").text("Rs "+vatAmt);
+                    })
+                },
+                error: function (response) {
+                    alert("error");
+                }
+            })
+        }
+        $(document).ready(function () {
+            calcTotal();
+        });
+    </script>
+    }

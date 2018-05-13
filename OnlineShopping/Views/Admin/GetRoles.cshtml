@@ -1,0 +1,31 @@
+﻿
+@{
+    Layout = null;
+}
+<h4>Get Roles</h4>
+@using (Html.BeginForm("GetRoles", "Admin"))
+{
+    <div class="form-group">
+        <div class="col-md-3 control-label">
+            User Name:
+        </div>
+        <div class="col-md-9">
+            <div class="input-group">
+                @Html.TextBox("getUserName", null, new { @class = "form-control" })
+                <div class="input-group-btn">
+                    <input type="submit" value="Get Roles for this User" class="btn btn-default" />
+                </div>
+            </div>
+        </div>
+    </div>
+}
+@if (ViewBag.RolesForThisUser != null)
+{
+    <ol>
+        @foreach (var s in ViewBag.RolesForThisUser)
+        {
+            <li>@s</li>
+        }
+    </ol>
+}
+

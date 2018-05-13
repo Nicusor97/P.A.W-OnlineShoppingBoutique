@@ -1,0 +1,357 @@
+﻿@model ECommPract.Models.SetupModel.ProductSetup
+@{
+    ViewBag.Title = "Product Details";
+}
+<style>
+    .toast-top-full-width{
+        top:70%;
+        margin:0 auto;
+        text-align:center;
+        /*left:50%;*/
+    }
+</style>
+<div class="contact-wrapper">
+    <div class="image-contact">
+        <img src="~/images/pageBanner.png" />
+        <h4 style="text-align:center">Product Name</h4>
+    </div>
+    <div class="row product-margin">
+        <div class="col-md-9">
+            @using (Html.BeginForm("AddCart", "ShoppingCart", FormMethod.Post, new { id = "addToCartForm" }))
+            {
+                <div class="col-md-5">
+                    @Html.Hidden("id", Model.ProductId)
+                    <img src="@Url.Content(Model.ProductImageUrl)" class="thumbnail" />
+                    @*<ul class="small-list">
+                        <li class="span1"><a href="#"><img src="~/images/ladies/2.jpg" class="thumbnail" /></a></li>
+                        <li class="span1"><a href="#"><img src="~/images/ladies/3.jpg" class="thumbnail" /></a></li>
+                        <li class="span1"><a href="#"><img src="~/images/ladies/4.jpg" class="thumbnail" /></a></li>
+                        <li class="span1"><a href="#"><img src="~/images/ladies/5.jpg" class="thumbnail" /></a></li>
+                    </ul>*@
+                </div>
+                <div class="col-md-7">
+                    <ul id="productdetail">
+                        <li><strong>Brand:</strong>@Model.BRANDNAME</li>
+                        <li><strong>Product Code:</strong>@Model.ProductCode</li>
+                        <li><strong>Reward Point:</strong>0</li>
+                        <li><strong>Availability:</strong>@Model.QUANTITY</li>
+                    </ul>
+                    <h3>Price: Rs. @Model.PRICE.ToString("0.00")</h3>
+                    <div class="form-inline">
+                        @*<input type="checkbox" />Option one is this and that  <br />
+                        <input type="checkbox" />Be sure to include why it's great<br />*@
+                        Qty:
+                        @Html.TextBox("cartQuantity", null, new { @class = "form-control", style = "width:15%;", placeholder = "0" })
+                        <button class="btn btn-default" type="button" id="btnAddCart">Add to Cart</button>
+                    </div>
+                </div>
+                <div class="col-md-12" style="clear:both;padding:15px;">
+                    <ul class="nav nav-tabs" id="myTab">
+                        <li class="active">
+                            <a href="#description" data-toggle="tab">Description</a>
+                        </li>
+                        <li>
+                            <a href="#addinfo" data-toggle="tab">Additional information</a>
+                        </li>
+                    </ul>
+                    <div class="tab-content">
+                        <div class="tab-pane fade in active" id="description" style="padding-top:15px;">
+                            @Model.PRODUCTDESC
+                        </div>
+                        <div class="tab-pane fade" id="addinfo">
+                            <table class="table table-striped">
+                                <tbody>
+                                    <tr>
+                                        <th>Size</th>
+                                        <td>@Model.SIZE</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Color</th>
+                                        <td>@Model.COLOR</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            }
+
+            <div class="col-md-12" style="margin-top:20px;">
+                <h4 class="title-main">
+                    <span class="pull-left">
+                        <span class="title-first">Related <strong class="title-second">Product</strong></span>
+                    </span>
+                    <span class="pull-right">
+                        <a href="#myCarousel" class="left" data-slide="prev">
+
+                        </a>
+                        <a href="#myCarousel" class="right" data-slide="next">
+
+                        </a>
+                    </span>
+                </h4>
+                <div class="carousel slide" id="myCarousel" data-ride="carousel">
+                    @*<ol class="carousel-indicators">
+                        <li data-target="myCarousel" data-slide-to="0" class="active">
+                        </li>
+                        <li data-target="myCarousel" data-slide-to="1"></li>
+                        @*<li data-target="myCarousel" data-slide-to="2"></li>*@
+                    @*</ol>*@
+                    <div class="form-horizontal">
+                        <div class="carousel-inner">
+
+                            <div class="item active">
+                                <div class="form-group">
+                                    <div class="thumbnails-index">
+                                        <div class="col-md-3">
+                                            <div class="productbox">
+                                                <a href="#">
+                                                    <img src="~/images/ladies/1.jpg" />
+                                                </a>
+                                                <a href="#" class="title-product">Ut wisi enim ad</a>
+                                                <br />
+                                                <a href="#" class="category">Commodo consequat</a>
+                                                <p class="price">$17.25</p>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <div class="productbox">
+                                                <a href="#">
+                                                    <img src="~/images/ladies/2.jpg" />
+                                                </a>
+                                                <a href="#" class="title-product">Ut wisi enim ad</a>
+                                                <br />
+                                                <a href="#" class="category">Commodo consequat</a>
+                                                <p class="price">$17.25</p>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <div class="productbox">
+                                                <a href="#">
+                                                    <img src="~/images/ladies/3.jpg" />
+                                                </a>
+                                                <a href="#" class="title-product">Ut wisi enim ad</a>
+                                                <br />
+                                                <a href="#" class="category">Commodo consequat</a>
+                                                <a href="#" class="price">$17.25</a>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <div class="productbox">
+                                                <a href="#">
+                                                    <img src="~/images/ladies/4.jpg" />
+                                                </a>
+                                                <a href="#" class="title-product">Ut wisi enim ad</a>
+                                                <br />
+                                                <a href="#" class="category">Commodo consequat</a>
+                                                <p class="price">$17.25</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="item">
+                                <div class="form-group">
+                                    <div class="thumbnails-index">
+                                        <div class="col-md-3">
+                                            <div class="productbox">
+                                                <a href="#">
+                                                    <img src="~/images/ladies/5.jpg" />
+                                                </a>
+                                                <a href="#" class="title-product">Ut wisi enim ad</a>
+                                                <br />
+                                                <a href="#" class="category">Commodo consequat</a>
+                                                <p class="price">$17.25</p>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <div class="productbox">
+                                                <a href="#">
+                                                    <img src="~/images/ladies/6.jpg" />
+                                                </a>
+                                                <a href="#" class="title-product">Ut wisi enim ad</a>
+                                                <br />
+                                                <a href="#" class="category">Commodo consequat</a>
+                                                <p class="price">$17.25</p>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <div class="productbox">
+                                                <a href="#">
+                                                    <img src="~/images/ladies/7.jpg" />
+                                                </a>
+                                                <a href="#" class="title-product">Ut wisi enim ad</a>
+                                                <br />
+                                                <a href="#" class="category">Commodo consequat</a>
+                                                <p class="price">$17.25</p>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <div class="productbox">
+                                                <a href="#">
+                                                    <img src="~/images/ladies/8.jpg" />
+                                                </a>
+                                                <a href="#" class="title-product">Ut wisi enim ad</a>
+                                                <br />
+                                                <a href="#" class="category">Commodo consequat</a>
+                                                <p class="price">$17.25</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            @*<div class="product-sidelist">
+                <h5 class="product-title"><strong>Sub Categories</strong></h5>
+                <ul class="productsidebar">
+                    <li>Nullam semper elementum</li>
+                    <li>Nullam semper elementum</li>
+                    <li>Nullam semper elementum</li>
+                    <li>Nullam semper elementum</li>
+                    <li>Nullam semper elementum</li>
+                </ul>
+                <h5 class="product-title"><strong>Manufacturer</strong></h5>
+                <ul class="productsidebar">
+                    <li>Adidas</li>
+                    <li>Nike</li>
+                    <li>Dunlop</li>
+                    <li>Yamaha</li>
+                </ul>
+            </div>*@
+            <div class="product-sidelist">
+                <h4 class="title-main">
+                    <span class="pull-left">
+                        <span class="title-first">Randomize</span>
+                    </span>
+                </h4>
+                <div>
+                    <div class="productbox">
+                        <a href="#">
+                            <img src="~/images/ladies/7.jpg" />
+                        </a>
+                        <a href="#" class="title-product">Ut wisi enim ad</a>
+                        <br />
+                        <a href="#" class="category">Commodo consequat</a>
+                        <p class="price">$17.25</p>
+                    </div>
+                    @*<img src="~/images/ladies/1.jpg" style="width:100%;" />*@
+                </div>
+            </div>
+            <div class="product-sidelist">
+                <h4 style="text-align:center;">
+                    <span style="color:#eb4800;"><strong>BEST</strong></span> SELLER
+                </h4>
+                <hr />
+                <div class="form-horizontal">
+                    <div class="form-group">
+                        <div class="col-md-2">
+                            <img src="~/images/ladies/1.jpg" width="50" height="50" />
+                        </div>
+                        <div class="col-md-10">
+                            Praesent tempor sem
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-2">
+                            <img src="~/images/ladies/1.jpg" width="50" height="50" />
+                        </div>
+                        <div class="col-md-10">
+                            Praesent tempor sem
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-2">
+                            <img src="~/images/ladies/1.jpg" width="50" height="50" />
+                        </div>
+                        <div class="col-md-10">
+                            Praesent tempor sem
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts{
+    <script type="text/javascript">
+        $(document).ready(function () {
+
+            var totQuantity = @Model.QUANTITY;
+            //$("#cartQuantity").on("input",function (e) {
+            //    var givenQuantity = $("#cartQuantity").val();
+            //    if(givenQuantity>totQuantity)
+            //    {
+            //        alert("Quantity greater than total quantity");
+            //        $("#btnAddCart").prop("disabled",true);
+            //    }
+            //    else
+            //    {
+            //        $("#btnAddCart").prop("disabled",false);
+            //    }
+            //});
+            toastr.options = {
+            "closeButton": true,
+            "debug": false,
+            "newestOnTop": false,
+            "progressBar": false,
+            "positionClass": "toast-top-full-width",
+            "preventDuplicates": true,
+            "onclick": null,
+            "showDuration": "300",
+            "hideDuration": "1000",
+            "timeOut": "5000",
+            "extendedTimeOut": "1000",
+            "showEasing": "swing",
+            "hideEasing": "linear",
+            "showMethod": "fadeIn",
+            "hideMethod": "fadeOut"
+            };
+            var valueReturned = 0;
+            $.ajax({
+                type:'GET',
+                url: '@Url.Action("CheckCart", "Product")' ,
+                data: { productid:@Model.ProductId },
+                success: function(response){
+                    valueReturned =  response;
+                },
+                error: function(response)
+                {
+                    alert("Error");
+                }
+            });
+            $("#btnAddCart").click(function(){
+                var givenQuantity = $("#cartQuantity").val();
+                if(givenQuantity == "")
+                {
+                    toastr["error"]("Please Enter the required item quantity!!");
+                }
+                else{
+                    if(givenQuantity>totQuantity)
+                    {
+                        //alert("Quantity greater than total quantity");
+                        toastr["error"]("Quanity greater then total quantity");
+                    
+                    }
+                    else
+                    {
+                        if(valueReturned == 1)
+                        {
+                            toastr["warning"]('Item already added previously!!Click @Html.ActionLink("here","Cart","ShoppingCart") to go to your cart and update the quantity!!',"Warning");
+                        }
+                        else{
+                            $("#addToCartForm").submit();
+                        }
+                        
+                    }
+                }
+            });
+        });
+    </script>
+}

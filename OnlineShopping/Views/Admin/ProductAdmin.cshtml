@@ -1,0 +1,223 @@
+﻿@model PagedList.IPagedList<ECommPract.Models.SetupModel.ProductSetup>
+@using PagedList.Mvc;
+    @{
+        ViewBag.Title = "Product";
+        Layout = "~/Views/AdminShared/_LayoutAdmin.cshtml";
+    }
+
+    <h2>Product</h2>
+    @*<div class="inbox-color-margin">*@
+    <div class="form-horizontal inbox-color-margin">
+        <div class="form-group" style="margin-left:10px;">
+            @foreach (var items in Model)
+            {
+                <div class="col-md-3 productgrid">
+                    <a href="#" data-target="#myModal" data-toggle="modal">
+                        <div>
+                            <img src="@Url.Content(items.ProductImageUrl)" class="img-responsive" style="height:150px;" />
+                        </div>
+                        <div class="product-admin-title">
+                            <p id="pro1">
+                                @items.ProductName<br />
+                                Rs. @items.PRICE.ToString("0.00")
+                            </p>
+                        </div>
+                    </a>
+                </div>
+            }
+           
+            @*<div class="col-md-3 productgrid">
+                <a href="#" data-target="#myModal" data-toggle="modal">
+                    <div>
+                        <img src="~/images/Admin/pro2.jpg" class="img-responsive" />
+                    </div>
+                    <div class="product-admin-title">
+                        <p id="pro2">
+                            Product 2<br />
+                            Rs.120
+                        </p>
+                    </div>
+                </a>
+            </div>
+            <div class="col-md-3 productgrid">
+                <a href="#" data-target="#myModal" data-toggle="modal">
+                    <div>
+                        <img src="~/images/Admin/pro3.jpg" class="img-responsive" />
+                    </div>
+                    <div class="product-admin-title">
+                        <p id="pro3">
+                            Product Title 3<br />
+                            Rs.121
+                        </p>
+                    </div>
+                </a>
+            </div>
+            <div class="col-md-3 productgrid">
+                <a href="#" data-target="#myModal" data-toggle="modal">
+                    <div>
+                        <img src="~/images/Admin/pro4.jpg" class="img-responsive" />
+                    </div>
+                    <div class="product-admin-title">
+                        <p id="pro4">
+                            Product Title 4<br />
+                            Rs.123
+                        </p>
+                    </div>
+                </a>
+            </div>*@
+        </div>
+        <div class="center">
+            @Html.PagedListPager(Model,page=>Url.Action("ProductAdmin","Admin",new { page }))
+            Page @(Model.PageCount<Model.PageNumber?0:Model.PageNumber) of @Model.PageNumber
+        </div>
+        @*<div class="form-group">
+            <div class="col-md-3 productgrid">
+                <a href="#" data-target="#myModal" data-toggle="modal">
+                    <div>
+                        <img src="~/images/Admin/pro4.jpg" class="img-responsive" />
+                    </div>
+                    <div class="product-admin-title">
+                        <p id="pro1">
+                            Product Title<br />
+                            Rs.12
+                        </p>
+                    </div>
+                </a>
+            </div>
+            <div class="col-md-3 productgrid">
+                <a href="#" data-target="#myModal" data-toggle="modal">
+                    <div>
+                        <img src="~/images/Admin/pro5.jpg" class="img-responsive" />
+                    </div>
+                    <div class="product-admin-title">
+                        <p id="pro2">
+                            Product 2<br />
+                            Rs.120
+                        </p>
+                    </div>
+                </a>
+            </div>
+            <div class="col-md-3 productgrid">
+                <a href="#" data-target="#myModal" data-toggle="modal">
+                    <div>
+                        <img src="~/images/Admin/pro6.jpg" class="img-responsive" />
+                    </div>
+                    <div class="product-admin-title">
+                        <p id="pro3">
+                            Product Title 3<br />
+                            Rs.121
+                        </p>
+                    </div>
+                </a>
+            </div>
+            <div class="col-md-3 productgrid">
+                <a href="#" data-target="#myModal" data-toggle="modal">
+                    <div>
+                        <img src="~/images/Admin/pro7.jpg" class="img-responsive" />
+                    </div>
+                    <div class="product-admin-title">
+                        <p id="pro4">
+                            Product Title 4<br />
+                            Rs.123
+                        </p>
+                    </div>
+                </a>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-3 productgrid">
+                <a href="#" data-target="#myModal" data-toggle="modal">
+                    <div>
+                        <img src="~/images/Admin/pro8.jpg" class="img-responsive" />
+                    </div>
+                    <div class="product-admin-title">
+                        <p id="pro1">
+                            Product Title<br />
+                            Rs.12
+                        </p>
+                    </div>
+                </a>
+            </div>
+            <div class="col-md-3 productgrid">
+                <a href="#" data-target="#myModal" data-toggle="modal">
+                    <div>
+                        <img src="~/images/Admin/pro9.jpg" class="img-responsive" />
+                    </div>
+                    <div class="product-admin-title">
+                        <p id="pro2">
+                            Product 2<br />
+                            Rs.120
+                        </p>
+                    </div>
+                </a>
+            </div>
+            <div class="col-md-3 productgrid">
+                <a href="#" data-target="#myModal" data-toggle="modal">
+                    <div>
+                        <img src="~/images/Admin/pro10.jpg" class="img-responsive" />
+                    </div>
+                    <div class="product-admin-title">
+                        <p id="pro3">
+                            Product Title 3<br />
+                            Rs.121
+                        </p>
+                    </div>
+                </a>
+            </div>
+            <div class="col-md-3 productgrid">
+                <a href="#" data-target="#myModal" data-toggle="modal">
+                    <div>
+                        <img src="~/images/Admin/pro4.jpg" class="img-responsive" />
+                    </div>
+                    <div class="product-admin-title">
+                        <p id="pro4">
+                            Product Title 4<br />
+                            Rs.123
+                        </p>
+                    </div>
+                </a>
+            </div>
+        </div>*@
+    </div>
+    <div class="modal fade" id="myModal" role="dialog" aria-hidden="true">
+        <div class="modal-dialog">
+            <button class="close" data-dissmiss="modal" type="button">&times;</button>
+            <div class="modal-content">
+                <div class="modal-body" style="border:10px solid #dedede">
+
+                    <img src="" alt="" class="img-responsive" />
+                    <div class="product-admin-title">
+                        <p id="ptext">
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    @*</div>*@
+    @section Scripts{
+        <script type="text/javascript">
+            var $lightbox = $("#myModal");
+            var $ptext = $("#ptext");
+            $('[data-target="#myModal"]').on("click", function (event) {
+                var $img = $(this).find("img"),
+                    src = $img.attr('src'),
+                    alt = $img.attr('alt');
+                css = {
+                    'maxWidth': $img.width(),
+                    'maxHeight': $img.height()
+                };
+                var $txt = $(this).find("p").html();
+                $lightbox.find(".close").addClass("hidden");
+                $lightbox.find("img").attr('src', src);
+                $lightbox.find("img").attr('alt', alt);
+                $lightbox.find("img").css(css);
+                $ptext.html($txt);
+            });
+            $lightbox.on("shown.bs.modal", function (e) {
+                var $img = $lightbox.find('img');
+                $lightbox.find('.modal-dialog').css({ 'width': $img.width() + 100, 'margin-top': '120px' });
+                $lightbox.find('.close').removeClass('hidden');
+            });
+        </script>
+    }

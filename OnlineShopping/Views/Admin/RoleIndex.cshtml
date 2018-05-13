@@ -1,0 +1,83 @@
+﻿
+@{
+    ViewBag.Title = "Role Index";
+    Layout = "~/Views/AdminShared/_LayoutAdmin.cshtml";
+}
+
+<h2>Index</h2>
+<div class="row inbox-color-margin">
+    <div class="col-md-4">
+        <div class="mail-profile">
+            <div class="mail-image">
+                <a href="#">
+                    <img src="~/images/Admin/b3.png" />
+                </a>
+            </div>
+            <div class="mail-title">
+                <h5>
+                    Name of the person
+                </h5>
+                <h6>
+                    <a href="#">example@gmail.com</a>
+                </h6>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+        @*<div class="compose-block">
+                <a href="#" data-target="#myModal" data-toggle="modal">Compose</a>
+            </div>*@
+        <div class="compose-bottom">
+            <nav class="nav-sidebar">
+                <ul class="nav tabs" id="roleSideMenu">
+                    <li class="active">
+                        <a href="#tab1" data-toggle="tab">Create Role</a>
+                    </li>
+                    <li class="">
+                        <a href="#tab2" data-toggle="tab">List Roles</a>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Manage Roles</a>
+                        <ul class="dropdown-menu">
+                            <li class="">
+                                <a href="#tab3" data-toggle="tab">
+                                    Add/Delete Roles to User
+                                </a>
+                            </li>
+                            <li><a href="#tab4" data-toggle="tab">Get Roles</a></li>
+                            
+                        </ul>
+                    </li>
+                    @*<li class="">
+                            <a href="#tab4" data-toggle="tab">Draft</a>
+                        </li>*@
+                </ul>
+            </nav>
+        </div>
+    </div>
+    <div class="col-md-8 tab-content tab-content-in">
+        <div class="tab-pane active" id="tab1">
+            @{ Html.RenderAction("CreateRole", "Admin");}
+        </div>
+        <div class="tab-pane" id="tab2">
+            @{Html.RenderAction("ListRole", "Admin");}
+        </div>
+        <div class="tab-pane" id="tab3">
+            @{ Html.RenderAction("ManageRoles", "Admin");}
+        </div>
+        <div class="tab-pane" id="tab4">
+            @{ Html.RenderAction("GetRoles", "Admin");}
+        </div>
+    </div>
+</div>
+@section Scripts{
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#roleSideMenu li.dropdown").hover(function () {
+                $(this).find(".dropdown-menu").stop(true, true).delay(200).fadeIn(500);
+            }, function () {
+                $(this).find(".dropdown-menu").stop(true, true).delay(200).fadeOut(500);
+            })
+        });
+    </script>
+    }
+ 

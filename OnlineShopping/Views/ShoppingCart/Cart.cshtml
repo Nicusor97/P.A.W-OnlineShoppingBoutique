@@ -1,0 +1,186 @@
+﻿@model IEnumerable<ECommPract.Models.MainClasses.ShoppingCart>
+@{
+    ViewBag.Title = "Cart";
+}
+
+<div class="contact-wrapper">
+    <div class="image-contact">
+        <img src="~/images/pageBanner.png" />
+        <h2 style="text-align:center">Shopping Cart</h2>
+    </div>
+    <div class="row product-margin">
+        <div class="col-md-9" style="padding-left:27px;">
+            <h4 class="title-main">
+                <span class="title-first"><strong style="color:#eb4800">Your</strong> Cart</span>
+            </h4>
+            <table class="table table-striped">
+                <tr>
+                    @*<th>Remove</th>*@
+                    <th>Image</th>
+                    <th>Product Name</th>
+                    <th>Quantity</th>
+                    <th>Unit Price</th>
+                    <th>Total</th>
+                </tr>
+
+                @{
+                    var i = 0;
+                    foreach (var items in Model)
+                    {
+                        <tr>
+                            @*<td>
+                                <a href="@Url.Action("RemoveFromCart","ShoppingCart",new { id=items.ItemID,productid=items.ProductId })">
+                                    <i class="fa fa-trash"></i>
+                                </a>
+                            </td>*@
+                            <td style="position:relative">
+                                <img src="@Url.Content(items.Product.ProductImageUrl)" class="imgHover" />
+                                <a href="@Url.Action("RemoveFromCart","ShoppingCart",new { id=items.ItemID,productid=items.ProductId })">
+                                    @*<span class="btn btn-block removeItem" id="removeItem">*@
+                                        <i class="fa fa-trash"></i>
+                                    @*</span>*@
+                                </a>
+                            </td>
+                            <td>@items.Product.ProductName</td>
+                            <td>
+                                <span>@items.Quantity</span>
+                                <input type="text" value="@items.Quantity" class="form-control" style="display:none" />
+                            </td>
+                            <td>Rs. @items.Product.PRICE</td>
+                            <td><span id="tot-price-@i"></span></td>
+                        </tr>
+                        i++;
+                    }
+                }
+
+
+            </table>
+            @*<div class="text-right">
+                    <strong><span class="subTotal"></span></strong>
+                </div>*@
+            <div>
+                <h3><strong>What would you like to do?</strong></h3>
+                <input type="radio" name="choice" value="coupon" />Use Coupon Code<br />
+                <input type="radio" name="choice" value="estimate" />Estimate Shipping & Taxes
+                <hr />
+            </div>
+            <div class="text-right">
+                <p><strong>Sub Total:</strong><span class="subTotal"></span></p>
+                <p><strong>VAT (17.5%):</strong>Rs <span id="vatAmt"></span></p>
+                <p><strong>Total: </strong><span id="grandTotal"></span></p>
+                <hr />
+            </div>
+            <div class="text-center" style="margin-bottom:20px;">
+                <button class="btn btn-default">Update</button>
+                @*<button class="btn btn-default">Continue</button>*@
+                <a href="@Url.Action("Checkout","Checkout")" class="btn btn-default">Checkout</a>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="product-sidelist">
+                <h5 class="product-title"><strong>Sub Categories</strong></h5>
+                <ul class="productsidebar">
+                    <li>Nullam semper elementum</li>
+                    <li>Nullam semper elementum</li>
+                    <li>Nullam semper elementum</li>
+                    <li>Nullam semper elementum</li>
+                    <li>Nullam semper elementum</li>
+                </ul>
+                <h5 class="product-title"><strong>Manufacturer</strong></h5>
+                <ul class="productsidebar">
+                    <li>Adidas</li>
+                    <li>Nike</li>
+                    <li>Dunlop</li>
+                    <li>Yamaha</li>
+                </ul>
+            </div>
+            <div class="product-sidelist">
+                <h4 class="title-main">
+                    <span class="pull-left">
+                        <span class="title-first">Randomize</span>
+                    </span>
+                </h4>
+                <div>
+                    <div class="productbox">
+                        <a href="#">
+                            <img src="~/images/ladies/7.jpg" />
+                        </a>
+                        <a href="#" class="title-product">Ut wisi enim ad</a>
+                        <br />
+                        <a href="#" class="category">Commodo consequat</a>
+                        <p class="price">$17.25</p>
+                    </div>
+                    @*<img src="~/images/ladies/1.jpg" style="width:100%;" />*@
+                </div>
+            </div>
+            <div class="product-sidelist">
+                <h4 style="text-align:center;">
+                    <span style="color:#eb4800;"><strong>BEST</strong></span> SELLER
+                </h4>
+                <hr />
+                <div class="form-horizontal">
+                    <div class="form-group">
+                        <div class="col-md-2">
+                            <img src="~/images/ladies/1.jpg" width="50" height="50" />
+                        </div>
+                        <div class="col-md-10">
+                            Praesent tempor sem
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-2">
+                            <img src="~/images/ladies/1.jpg" width="50" height="50" />
+                        </div>
+                        <div class="col-md-10">
+                            Praesent tempor sem
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-2">
+                            <img src="~/images/ladies/1.jpg" width="50" height="50" />
+                        </div>
+                        <div class="col-md-10">
+                            Praesent tempor sem
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts{
+    <script type="text/javascript">
+        function calcTotal() {
+            var subTotal = 0;
+            var vatAmt = 0;
+            var grandTotal = 0;
+            $.ajax({
+                type: 'GET',
+                url: '@Url.Action("CalculateTotal","ShoppingCart")',
+                success: function (response) {
+                    $.each(response, function (index, value) {
+                        $("#tot-price-" + index).text("Rs " + value);
+                        subTotal += parseFloat(value);
+                        $(".subTotal").text("Rs " + subTotal);
+                        vatAmt = 0.175 * subTotal;
+                        $("#vatAmt").text(vatAmt);
+                        grandTotal = subTotal - parseFloat(vatAmt);
+                        $("#grandTotal").text("Rs " + grandTotal);
+                    })
+                },
+                error: function (response) {
+                    alert("error");
+                }
+            })
+        }
+        $(document).ready(function () {
+            calcTotal();
+            //$(".table-striped tr td img").hover(function () {
+            //    $("#removeItem").css("display", "block");
+            //}, function () {
+            //    $("#removeItem").css("display", "none");
+            //});
+        });
+    </script>
+}

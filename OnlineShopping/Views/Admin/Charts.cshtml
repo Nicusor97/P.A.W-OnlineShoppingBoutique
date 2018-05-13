@@ -1,0 +1,93 @@
+﻿
+@{
+    ViewBag.Title = "Charts";
+    Layout = "~/Views/AdminShared/_LayoutAdmin.cshtml";
+}
+
+
+<div class="col-md-6 index-color-margin">
+    <div class="canvas-height">
+        <h3 class="canvas-title">
+            Donuts Chart
+        </h3>
+        <canvas id="donutChart"></canvas>
+    </div>
+</div>
+<div class="col-md-6 index-color-margin">
+    <div class="canvas-height">
+        <h3 class="canvas-title">
+            Line Chart
+        </h3>
+        <canvas id="lineChart"></canvas>
+    </div>
+
+</div>
+<div class="col-md-6 index-color-margin">
+    <div class="canvas-height">
+        <h3 class="canvas-title">
+            Polar Chart
+        </h3>
+        <canvas id="polarChart"></canvas>
+    </div>
+</div>
+<div class="col-md-6 index-color-margin">
+    <div class="canvas-height">
+        <h3 class="canvas-title">
+            Pie Chart
+        </h3>
+        <canvas id="pieChart"></canvas>
+    </div>
+</div>
+@section Scripts{
+    <script type="text/javascript">
+        var donut = document.getElementById("donutChart").getContext("2d");
+        var donutchart = new Chart(donut, {
+            type: 'doughnut',
+            data: {
+                labels: ["M", "T", "S", "S"],
+                datasets: [{
+
+                    backgroundColor: ["#337AB7", "#929292", "#FC8213", "#68AE00"],
+                    data: [30, 40, 100, 40]
+                }]
+            }
+        });
+        var line = document.getElementById("lineChart").getContext("2d");
+        var lineChart = new Chart(line, {
+            type: 'line',
+            data: {
+                labels: ["M", "T", "W", "T", "F", "S", "S"],
+                datasets: [{
+                    backgroundColor: "#FC8213",
+                    data: [50, 35, 65, 11, 54, 65, 10]
+                },
+                {
+                    backgroundColor: "#68AE00",
+                    data: [60, 35, 90, 40, 11, 52, 10]
+                }]
+            }
+        });
+        var polar = document.getElementById("polarChart").getContext("2d");
+        var polarChart = new Chart(polar, {
+            type: 'polarArea',
+            data: {
+                labels: ["M", "T", "W", "T"],
+                datasets: [{
+                    backgroundColor: ["#337AB7", "#929292", "#FC8213", "#68AE00"],
+                    data: [50, 35, 66, 55]
+                }]
+            }
+        });
+        var pie = document.getElementById("pieChart").getContext("2d");
+        var pieChart = new Chart(pie, {
+            type: 'pie',
+            data: {
+                labels: ["M", "T", "W", "T"],
+                datasets: [{
+                    backgroundColor: ["#337AB7", "#929292", "#FC8213", "#68AE00"],
+                    data: [50, 35, 66, 55]
+                }]
+            }
+        });
+    </script>
+}
