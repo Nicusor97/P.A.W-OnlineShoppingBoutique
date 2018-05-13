@@ -1,0 +1,13 @@
+﻿body {
+}
+.productgrid{
+    padding:0px 12px 0px 0px;
+}
+.product-admin-title{
+    padding:0.8em 1em;
+    background:#337AB7;
+}
+.product-admin-title p{
+    color:#fff;
+    text-align:center;
+}

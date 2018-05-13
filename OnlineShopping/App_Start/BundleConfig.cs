@@ -1,7 +1,7 @@
 ﻿using System.Web;
 using System.Web.Optimization;
 
-namespace OnlineShopping
+namespace ECommPract
 {
     public class BundleConfig
     {
@@ -13,6 +13,9 @@ namespace OnlineShopping
 
             bundles.Add(new ScriptBundle("~/bundles/jqueryval").Include(
                         "~/Scripts/jquery.validate*"));
+            bundles.Add(new ScriptBundle("~/bundles/jqueryui").Include(
+                        "~/Scripts/jquery-ui*"
+                ));
 
             // Use the development version of Modernizr to develop with and learn from. Then, when you're
             // ready for production, use the build tool at http://modernizr.com to pick only the tests you need.
@@ -25,7 +28,20 @@ namespace OnlineShopping
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
-                      "~/Content/site.css"));
+                      "~/Content/site.css",
+                      "~/Content/home-style.css",
+                      "~/Content/font-awesome.min.css",
+                      "~/Content/contact.css",
+                      "~/Content/product.css",
+                      "~/Content/checkout.css",
+                      "~/Content/cart.css"));
+            bundles.Add(new StyleBundle("~/Content/admin").Include(
+                "~/Content/Admin/main.css",
+                "~/Content/Admin/admin-home.css",
+                "~/Content/Admin/profilecard.css",
+                "~/Content/Admin/inbox.css",
+                "~/Content/Admin/admin-product.css",
+                "~/Content/Admin/composemail.css"));
         }
     }
 }

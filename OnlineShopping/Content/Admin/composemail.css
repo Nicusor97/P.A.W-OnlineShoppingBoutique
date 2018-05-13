@@ -1,0 +1,31 @@
+﻿body {
+}
+h2.compose-email{
+    background-color:#dedede;
+}
+.compose{
+    padding:10px 10px;
+    background:#fff;
+
+}
+.compose-body{
+    padding:10px 10px;
+}
+.fill-message{
+    background-color:#337AB7;
+    padding:10px;
+    color:#fff;
+    margin-bottom:15px;
+}
+.btn-file>input[type='file']{
+    position:absolute;
+    top:0;
+    right:0;
+    opacity:0;
+    outline:none;
+    background:#fff;
+    cursor:pointer;
+    display:inline-flex;
+    width:100%;
+    padding:0.4em;
+}

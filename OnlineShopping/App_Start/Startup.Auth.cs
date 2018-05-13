@@ -4,10 +4,12 @@ using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin;
 using Microsoft.Owin.Security.Cookies;
 using Microsoft.Owin.Security.Google;
+using Microsoft.Owin.Security.Twitter;
 using Owin;
-using OnlineShopping.Models;
+using ECommPract.Models;
+using Microsoft.Owin.Security;
 
-namespace OnlineShopping
+namespace ECommPract
 {
     public partial class Startup
     {
@@ -34,7 +36,7 @@ namespace OnlineShopping
                         validateInterval: TimeSpan.FromMinutes(30),
                         regenerateIdentity: (manager, user) => user.GenerateUserIdentityAsync(manager))
                 }
-            });            
+            });
             app.UseExternalSignInCookie(DefaultAuthenticationTypes.ExternalCookie);
 
             // Enables the application to temporarily store user information when they are verifying the second factor in the two-factor authentication process.
@@ -50,19 +52,31 @@ namespace OnlineShopping
             //    clientId: "",
             //    clientSecret: "");
 
-            //app.UseTwitterAuthentication(
-            //   consumerKey: "",
-            //   consumerSecret: "");
+
+            app.UseTwitterAuthentication(new TwitterAuthenticationOptions
+            {
+                ConsumerKey = "mzfXMou1PsvOdIgNi9Rl4Mipz",
+                ConsumerSecret = "q2RRUEbAijDRgtgFCbFVGAsRQR0A9bC8c4oUsCHcfV8hqC3TDL",
+                BackchannelCertificateValidator = new CertificateSubjectKeyIdentifierValidator(new[]
+    {
+        "A5EF0B11CEC04103A34A659048B21CE0572D7D47", // VeriSign Class 3 Secure Server CA - G2
+        "0D445C165344C1827E1D20AB25F40163D8BE79A5", // VeriSign Class 3 Secure Server CA - G3
+        "7FD365A7C2DDECBBF03009F34339FA02AF333133", // VeriSign Class 3 Public Primary Certification Authority - G5
+        "39A55D933676616E73A761DFA16A7E59CDE66FAD", // Symantec Class 3 Secure Server CA - G4
+        "5168FF90AF0207753CCCD9656462A212B859723B", //DigiCert SHA2 High Assurance Server C‎A 
+        "B13EC36903F8BF4701D498261A0802EF63642BC3" //DigiCert High Assurance EV Root CA
+    })
+            });
 
             //app.UseFacebookAuthentication(
             //   appId: "",
             //   appSecret: "");
 
-            //app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions()
-            //{
-            //    ClientId = "",
-            //    ClientSecret = ""
-            //});
+            app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions()
+            {
+                ClientId = "641191743090-n2hc9k048ip7t6lbeig0v9o7sn0i2sr1.apps.googleusercontent.com",
+                ClientSecret = "Gh9JHC-TIZO06zm1vU7XShq9"
+            });
         }
     }
 }

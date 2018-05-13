@@ -1,0 +1,99 @@
+﻿body {
+}
+
+.registered-user-block,.daily-visitors-block,.messages-block {
+    background-color: #68ae00;
+    box-shadow: 0 2px 4px 0 rgba(0,0,0,0.16);
+    -webkit-box-shadow: 0 2px 4px 0 rgba(0,0,0,0.16);
+    transition: 0.5s all;
+    -webkit-transition: 0.5s all;
+    padding: 1.5em 1.5em;
+    margin: 10px 0;
+    height:160px;
+    color:#fff;
+}
+.registered-user-block:hover,.daily-visitors-block:hover,.messages-block:hover{
+    background-color:#656565;
+    color:#fff;
+}
+.registered-user-block i.fa.fa-file-text-o,.daily-visitors-block i.fa.fa-eye,.messages-block i.fa.fa-envelope-o{
+    font-size:2em;
+    color:#68AE00;
+    width:60px;
+    height:60px;
+    margin-top:0.7em;
+    background:#fff;
+    text-align:center;
+    border-radius:49px;
+    -webkit-border-radius:49px;
+    line-height:1.7em;
+    padding:10px;
+}
+.daily-visitors-block i.fa.fa-eye{
+    color:#FC8213;
+}
+.messages-block i.fa.fa-envelope-o{
+    color:#337AB7;
+}
+.registered-user-block h3,.daily-visitors-block h3,.messages-block h3{
+    font-size:2.5em;
+    font-family:sans-serif;
+}
+.registered-user-block h4,.daily-visitors-block h4,.messages-block h4{
+    font-size:1em;
+}
+.daily-visitors-block {
+    background-color: #FC8213;
+    /*box-shadow: 0 2px 4px 0 rgba(0,0,0,0.16);
+    -webkit-box-shadow: 0 2px 4px 0 rgba(0,0,0,0.16);
+    transition: 0.5s all;
+    -webkit-transition: 0.5s all;
+    padding: 1.5em 1.5em;
+    margin: 10px 0;*/
+}
+/*.daily-visitors-block:hover{
+    background-color:#656565;
+    color:#fff;
+}*/
+.messages-block {
+    background-color: #337AB7;
+    /*box-shadow: 0 2px 4px 0 rgba(0,0,0,0.16);
+    -webkit-box-shadow: 0 2px 4px 0 rgba(0,0,0,0.16);
+    transition: 0.5s all;
+    -webkit-transition: 0.5s all;
+    padding: 1.5em 1.5em;
+    margin: 10px 0;*/
+}
+.canvas-height{
+    height:292px!important;
+}
+.popular-brand-right{
+    background-color:#fc8213;
+    padding:2.4em 1em;
+}
+.brand-name{
+    border:3px solid #fff;
+    border-radius:62px;
+    -webkit-border-radius:62px;
+    -moz-border-radius:62px;
+    font-size:1.55em;
+    color:#fff;
+    width:77px;
+    height:77px;
+    margin:0 auto;
+    line-height:2.8em;
+    padding-left:17px;
+    padding-top:10px;
+}
+.index-container{
+    margin-left:15px;
+    margin-right:15px;
+}
+.index-color-margin{
+    background-color:#fff;
+    margin-bottom:20px;
+}
+canvas#myChart{
+    width:373px!important;
+    height:292px!important;
+}

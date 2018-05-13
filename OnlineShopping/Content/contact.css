@@ -1,0 +1,27 @@
+﻿body {
+}
+.contact-wrapper{
+    background-color:#fff;
+    margin:auto 0;
+    padding-bottom:15px;
+}
+.image-contact{
+    margin:0 10px 10px 10px;
+    width:100%;
+}
+.image-contact img{
+    width:100%;
+    padding-right:20px;
+    padding-top:15px;
+}
+.additionalinfo{
+    margin-left:10px;
+    font-weight:bold;
+    margin-bottom:15px;
+}
+#info>p{
+    margin-left:10px;
+}
+#message label{
+    margin-left:-15px;
+}

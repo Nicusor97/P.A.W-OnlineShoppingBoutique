@@ -1,0 +1,43 @@
+﻿body {
+}
+
+h4.panel-title a {
+    color: #eb4800;
+}
+
+    h4.panel-title a:hover, h4.panel-title a:visited {
+        text-decoration: none;
+        color: #eb4800;
+    }
+
+.form-group label {
+    margin-top: 10px;
+    margin-bottom: 5px;
+}
+
+.checkout-margin {
+    padding-left: 25px;
+    padding-right: 30px;
+    margin-bottom: 20px;
+}
+
+.fa-smile {
+    position: relative;
+}
+
+    .fa-smile:before {
+        content: "\f111";
+        color: #f1c40f;
+    }
+
+    .fa-smile:after {
+        left: 0;
+        position: absolute;
+        content: "\f118";
+    }
+    .table-text-align-numbers-right{
+        text-align:right;
+    }
+    .table-text-align-numbers-center{
+        text-align:center;
+    }
